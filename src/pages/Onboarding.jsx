@@ -106,7 +106,7 @@ function App() {
       <div className="flex justify-end">
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
           disabled={!formData.name || !formData.email}
         >
           Continue
@@ -153,7 +153,7 @@ function App() {
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
           disabled={!formData.careerGoal}
         >
           Continue
@@ -211,7 +211,7 @@ function App() {
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
           disabled={!formData.grades}
         >
           Continue
@@ -282,7 +282,7 @@ function App() {
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
         >
           Continue
         </button>
@@ -335,7 +335,7 @@ function App() {
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
           disabled={formData.learningPreferences.length === 0}
         >
           Continue
@@ -405,7 +405,7 @@ function App() {
         </button>
         <button
           onClick={handleSubmit}
-          className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+          className="px-6 py-2 bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow text-white rounded-lg hover:bg-green-700 transition-colors"
         >
           Submit Onboarding
         </button>

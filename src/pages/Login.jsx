@@ -28,7 +28,8 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       showTempMessage("Login successful!", "success");
-      setTimeout(() => navigate("/dashboard"), 2000);
+      // Redirect to onboarding page instead of dashboard
+      setTimeout(() => navigate("/onboarding"), 2000);
     } catch (err) {
       showTempMessage("Invalid credentials.");
     }
@@ -38,7 +39,8 @@ const Login = () => {
     try {
       await signInWithPopup(auth, provider);
       showTempMessage("Google login successful!", "success");
-      setTimeout(() => navigate("/dashboard"), 2000);
+      // Redirect to onboarding page instead of dashboard
+      setTimeout(() => navigate("/onboarding"), 2000);
     } catch (err) {
       showTempMessage("Google login failed.");
     }
@@ -55,23 +57,21 @@ const Login = () => {
             {message.text}
           </div>
         )}
-  {/* 🔵 Title */}
- <h1 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow mb-4">
-  EduCraft
-</h1>
+        {/* 🔵 Title */}
+        <h1 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow mb-4">
+          EduCraft
+        </h1>
 
+        {/* 🔵 Full-width image */}
+        <img
+          src={logostud}
+          alt="Logo"
+          className="w-full h-40 object-cover mb-6"
+        />
 
-
-  {/* 🔵 Full-width image */}
-  <img
-    src={logostud}
-    alt="Logo"
-    className="w-full h-40 object-cover mb-6"
-  />
-
-       <h2 className="text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow mb-4">
- Welcome Back 👋
-</h2>
+        <h2 className="text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow mb-4">
+          Welcome Back 👋
+        </h2>
 
         <form onSubmit={handleLogin}>
           {/* Email Input */}

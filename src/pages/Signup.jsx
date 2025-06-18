@@ -93,7 +93,7 @@ const Signup = () => {
                 placeholder="First Name"
                 className="w-full pl-10 pr-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
-              <FaUser className="absolute left-3 top-3.5 text-emerald-400" />
+              <FaUser className="absolute right-3 top-3.5 text-emerald-400" />
             </div>
             <div className="relative w-full">
               <input
@@ -104,7 +104,7 @@ const Signup = () => {
                 placeholder="Last Name"
                 className="w-full pl-10 pr-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
-              <FaUser className="absolute left-3 top-3.5 text-emerald-400" />
+              <FaUser className="absolute right-3 top-3.5 text-emerald-400" />
             </div>
           </div>
 
@@ -118,7 +118,7 @@ const Signup = () => {
               placeholder="Email"
               className="w-full pl-10 pr-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400"
             />
-            <MdMarkEmailUnread className="absolute left-3 top-3.5 text-emerald-400" />
+            <MdMarkEmailUnread className="absolute right-3 top-3.5 text-emerald-400" />
           </div>
 
           {/* Password */}
@@ -131,7 +131,14 @@ const Signup = () => {
               placeholder="Password"
               className="w-full pl-10 pr-12 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400"
             />
-          
+           <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-3.5 text-xl text-gray-600 hover:text-emerald-400"
+            >
+              {showPassword ? <HiEyeOff /> : <HiEye />}
+            </button>
+         
           </div>
 
           {/* Confirm Password */}
