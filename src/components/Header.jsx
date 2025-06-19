@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
  */
 const Header = () => {
   return (
-    <header className="bg-white shadow">
+    <header className="bg-white shadow w-full">
       <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Application title/logo */}
         <h1 className="text-2xl font-bold text-emerald-600">Student Dashboard</h1>
@@ -28,7 +28,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </header>
+    </header> 
   );
 };
 

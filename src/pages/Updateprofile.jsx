@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import UpdateprofileComponent from '../components/UpdateprofileComponenet';
 
 
 const Updateprofile = () => {
@@ -18,7 +19,7 @@ const Updateprofile = () => {
         {/* Main content goes here */}
         <div className="p-4">
           {/* Student dashboard or content */}
-          <DashboardComponent />    
+          <UpdateprofileComponent/>  
         </div>
       </div>
     </div>

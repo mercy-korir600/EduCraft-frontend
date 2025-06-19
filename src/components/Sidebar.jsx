@@ -14,7 +14,7 @@ const Sidebar = () => {
         {/* <Link to="/Dashboard"  icon={<MdDashboardCustomize  className="text-2xl"/> }>Dashboard</Link> */}
         <SidebarItem to="/Dashboard" icon={<MdDashboardCustomize  className="text-2xl"/> }label="Dashboard" />
         <SidebarItem to="/Progresstracker" icon={<SiPivotaltracker  className="text-2xl"/>}label="Progress Tracker" />
-        <SidebarItem to="/update-profile" icon={<CgProfile className="text-2xl"/>} label="Update Profile" />
+        <SidebarItem to="/updateprofile" icon={<CgProfile className="text-2xl"/>} label="Update Profile" />
         <SidebarItem to="/ask-ai" icon={<SiChatbot className="text-2xl" />} label="Ask AI Assistant" />
       </ul>
       
