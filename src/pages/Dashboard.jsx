@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import DashboardComponent from '../components/DashboardComponent';
 
-const Student = () => {
+const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -17,11 +18,12 @@ const Student = () => {
         {/* Main content goes here */}
         <div className="p-4">
           {/* Student dashboard or content */}
-          Content goes here...
+          <DashboardComponent />    
         </div>
       </div>
     </div>
   );
 };
 
-export default Student;
+export default Dashboard;
+  

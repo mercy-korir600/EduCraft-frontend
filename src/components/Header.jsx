@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { CgProfile } from "react-icons/cg";
 /**
  * Header component containing logo, title, and user profile
  */
@@ -22,7 +22,8 @@ const Header = () => {
           
           {/* User profile */}
           <div className="flex items-center">
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-10 h-10"></div>
+            {/* <div className="bg-gray-200 border-2 border-dashed rounded-xl w-10 h-10"></div> */}  
+       <CgProfile  className="text-2xl" />
             <span className="ml-2 font-medium">Alex Johnson</span>
           </div>
         </div>
