@@ -37,6 +37,7 @@ import Updateprofile from "./pages/Updateprofile";
 import AskAI from "./pages/AskAI";
 import Student from "./pages/Student";
 import Dashboard from "./pages/Dashboard";
+import Course from "./pages/Course";
 /**
  * Main application component that sets up routing and layout structure
  */
@@ -49,6 +50,7 @@ function App() {
         <Route path="/Onboarding" element={<Onboarding />} />
         <Route path="/Learningpath" element={<Learningpath />} />
         <Route path="/Student" element={<Student />} />
+         <Route path="/Course" element={<Course />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Progresstracker" element={<Progresstracker />} />
         <Route path="/Updateprofile" element={<Updateprofile />} />

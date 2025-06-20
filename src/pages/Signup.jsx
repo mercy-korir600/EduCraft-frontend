@@ -52,7 +52,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-emerald-200 via-fuchsia-300 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-emerald-200 via-emerald-50 to-emerald-300
+animate-glow p-4">
       <div className="bg-white shadow-2xl rounded-2xl px-6 py-10 w-full max-w-md sm:px-8 lg:px-10 relative">
 
         {message.text && (
@@ -62,7 +63,9 @@ const Signup = () => {
           </div>
         )}
  {/* 🔵 Title */}
- <h1 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow mb-4">
+ <h1 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
+animate-glow
+mb-4">
   EduCraft
 </h1>
 
@@ -77,13 +80,14 @@ const Signup = () => {
 />
 
 
-<h2 className="text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow mb-4">
+<h2 className="text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
+animate-glow mb-4">
  SignUp to enjoy the best EduCraft experience
 </h2>
 
         <form onSubmit={handleSignup}>
           {/* Name Inputs */}
-          <div className="flex gap-4 mb-6 flex-col sm:flex-row">
+          {/* <div className="flex gap-4 mb-6 flex-col sm:flex-row">
             <div className="relative w-full">
               <input
                 type="text"
@@ -106,7 +110,7 @@ const Signup = () => {
               />
               <FaUser className="absolute right-3 top-3.5 text-emerald-400" />
             </div>
-          </div>
+          </div> */}
 
           {/* Email */}
           <div className="relative mb-6">
@@ -163,7 +167,8 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-emerald-400 via-fuchsia-500 to-rose-500 animate-glow hover:bg-emerald-500 transition text-white py-3 rounded-xl font-semibold text-lg shadow-md"
+            className="w-full bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
+animate-glow hover:bg-emerald-500 transition text-white py-3 rounded-xl font-semibold text-lg shadow-md"
           >
             Sign Up
           </button>

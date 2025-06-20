@@ -12,6 +12,7 @@ const Sidebar = () => {
       {/* Main navigation links */}
       <ul className="py-4">
         {/* <Link to="/Dashboard"  icon={<MdDashboardCustomize  className="text-2xl"/> }>Dashboard</Link> */}
+         <SidebarItem to="/Course" icon={<MdDashboardCustomize  className="text-2xl"/> }label="Course" />
         <SidebarItem to="/Dashboard" icon={<MdDashboardCustomize  className="text-2xl"/> }label="Dashboard" />
         <SidebarItem to="/Progresstracker" icon={<SiPivotaltracker  className="text-2xl"/>}label="Progress Tracker" />
         <SidebarItem to="/updateprofile" icon={<CgProfile className="text-2xl"/>} label="Update Profile" />
