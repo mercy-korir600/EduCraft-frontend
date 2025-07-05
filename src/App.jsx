@@ -1,62 +1,36 @@
-// import Login from "./pages/Login"
-// import Signup from "./pages/Signup"
-// import Onboarding from "./pages/Onboarding"
-// import Learningpath from "./pages/Learningpath"
-// import Student from "./pages/Student"
-// import Utility from "./pages/Utility"
-// import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-// function App() {
+// App.jsx
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
-//   return (
-//     <>
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<Login/>} />
-//         <Route path="/Signup" element={<Signup/>}/>
-//         <Route path="/Onboarding" element={<Onboarding/>}/>
-//         <Route path="/Learningpath" element={<Learningpath/>}/>
-//         <Route path="/Student" element={<Student/>}/>
-//         <Route path="/Utility" element={<Utility/>}/>
-//       </Routes>
-//     </Router>
-//     </>
-//   )
-// }
+import Splash from './pages/Splash';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Onboarding from './pages/Onboarding';
+import Learningpath from './pages/Learningpath';
+import Course from './pages/Course';
+import Dashboard from './pages/Dashboard';
+import Progresstracker from './pages/ProgressTracker';
+import Updateprofile from './pages/Updateprofile';
+import AskAI from './pages/AskAI';
 
-// export default App
-
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Onboarding from "./pages/Onboarding";
-import Learningpath from "./pages/Learningpath";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import Progresstracker from "./pages/ProgressTracker";
-import Updateprofile from "./pages/Updateprofile";
-import AskAI from "./pages/AskAI";
-import Student from "./pages/Student";
-import Dashboard from "./pages/Dashboard";
-import Course from "./pages/Course";
-/**
- * Main application component that sets up routing and layout structure
- */
 function App() {
+  const location = useLocation(); // ✅ This now works
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Splash />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Onboarding" element={<Onboarding />} />
         <Route path="/Learningpath" element={<Learningpath />} />
-        <Route path="/Student" element={<Student />} />
-         <Route path="/Course" element={<Course />} />
+        <Route path="/Course" element={<Course />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Progresstracker" element={<Progresstracker />} />
         <Route path="/Updateprofile" element={<Updateprofile />} />
         <Route path="/Ask-AI" element={<AskAI />} />
       </Routes>
-    </Router>
+    </AnimatePresence>
   );
 }
 

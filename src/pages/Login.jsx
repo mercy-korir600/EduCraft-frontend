@@ -6,6 +6,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { auth, provider, signInWithPopup } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import logostud from "../assets/logostud.jpg";
+import PageWrapper from "../components/PageWrapper";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -47,8 +48,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-emerald-200 via-emerald-50 to-emerald-300
-animate-glow p-4">
+    <PageWrapper>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-emerald-200 via-emerald-50 to-emerald-300 dark:from bg-emerald-100 dark:to-emerald-300 p-6 
+animate-glow transition-all p-4">
       <div className="bg-white shadow-2xl rounded-2xl px-6 py-10 w-full max-w-md sm:px-8 lg:px-10 relative">
         {/* Alert */}
         {message.text && (
@@ -72,11 +74,11 @@ animate-glow mb-4"
         </h1>
 
         {/* 🔵 Full-width image */}
-        <img
+        {/* <img
           src={logostud}
           alt="Logo"
           className="w-full h-40 object-cover mb-6"
-        />
+        /> */}
 
         <h2 className="text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
 animate-glow mb-4">
@@ -129,7 +131,8 @@ animate-glow mb-4">
             className="w-full bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
 animate-glow hover:bg-emerald-400 transition text-white py-3 rounded-xl font-semibold text-lg shadow-md"
           >
-            Log In
+             <Link to="/Student" className="text-emerald-400 font-semibold hover:underline">Log in</Link>
+          
           </button>
         </form>
 
@@ -161,6 +164,7 @@ animate-glow hover:bg-emerald-400 transition text-white py-3 rounded-xl font-sem
         </p>
       </div>
     </div>
+    </PageWrapper>
   );
 };
 

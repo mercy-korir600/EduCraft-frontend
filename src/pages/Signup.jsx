@@ -73,11 +73,11 @@ mb-4">
 
 
   {/* 🔵 Full-width image */}
- <img
+ {/* <img
   src={logostud}
   alt="Logo"
   className="w-full h-40 object-cover mb-6 rounded-xl"
-/>
+/> */}
 
 
 <h2 className="text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
@@ -187,7 +187,7 @@ animate-glow hover:bg-emerald-500 transition text-white py-3 rounded-xl font-sem
 
         <p className="text-sm text-gray-600 text-center mt-6">
           Already have an account?{' '}
-          <Link to="/" className="text-emerald-400 font-semibold hover:underline">Log in</Link>
+          <Link to="/Login" className="text-emerald-400 font-semibold hover:underline">Log in</Link>
         </p>
       </div>
     </div>

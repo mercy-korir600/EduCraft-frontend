@@ -88,6 +88,16 @@ const UpdateprofileComponent = () => {
         {/* Career Goals */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h2 className="text-lg font-semibold mb-4">Career Goals</h2>
+
+<div className="flex justify-end">
+          <button
+            type="submit"
+            className="px-4 py-2 mb-4 bg-emerald-600  text-white rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+          >
+       ADD CAREER
+          </button>
+        </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Career Path</label>
             <select

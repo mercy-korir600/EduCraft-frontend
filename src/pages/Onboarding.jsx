@@ -1,7 +1,6 @@
-// src/App.jsx
 import React, { useState } from 'react';
 
-function App() {
+function Onboarding() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -413,6 +412,7 @@ animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
           className="px-6 py-2 bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
 animate-glow text-white rounded-lg hover:bg-green-700 transition-colors"
         >
+
           Submit Onboarding
         </button>
       </div>
@@ -499,4 +499,4 @@ animate-glow text-white rounded-lg hover:bg-green-700 transition-colors"
   );
 }
 
-export default App;
+export default Onboarding;

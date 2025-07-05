@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:dark {
+     --background-color: aqua;
+     --button-color: #fefefe;
+     --bg-gradient: ;
+}
