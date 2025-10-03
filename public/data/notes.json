@@ -1,0 +1,80 @@
+{
+  "Software Engineer": {
+    "visual": [
+      {
+        "title": "Introduction to Web Designing",
+        "type": "pdf",
+        "url": "/notes/introduction-to-web-designing.pdf",
+        "description": "Learn the basics of HTML, CSS, and JavaScript with diagrams and examples."
+      }
+    ],
+    "auditory": [
+      {
+        "title": "System Design Podcast",
+        "type": "video",
+        "url": "https://www.youtube.com/watch?v=UzLMhqg3_Wc",
+        "description": "Podcast-style lecture about scalable system design."
+      }
+    ],
+    "reading": [
+      {
+        "title": "Clean Code (Book Summary)",
+        "type": "pdf",
+        "url": "/notes/clean-code-summary.pdf",
+        "description": "Summary of Clean Code principles for writing maintainable software."
+      }
+    ],
+    "kinesthetic": [
+      {
+        "title": "Build a ToDo App",
+        "type": "text",
+        "content": "Step-by-step guide to build a ToDo app using React and Firebase."
+      }
+    ]
+  },
+
+  "Data Scientist": {
+    "visual": [
+      {
+        "title": "Data Visualization Guide",
+        "type": "pdf",
+        "url": "/notes/data-visualization.pdf",
+        "description": "Covers data plots, histograms, and machine learning model visualization."
+      }
+    ],
+    "auditory": [
+      {
+        "title": "Statistics Explained",
+        "type": "video",
+        "url": "https://www.youtube.com/watch?v=xxpc-HPKN28",
+        "description": "Statistics basics explained in an audio-visual format."
+      }
+    ],
+    "reading": [
+      {
+        "title": "Python for Data Science Notes",
+        "type": "pdf",
+        "url": "/notes/python-for-data-science.pdf",
+        "description": "Beginner-friendly notes on using Python for data analysis."
+      }
+    ]
+  },
+
+  "UX Designer": {
+    "visual": [
+      {
+        "title": "Figma Basics",
+        "type": "video",
+        "url": "https://www.youtube.com/watch?v=FTFaQWZBqQ8",
+        "description": "A video walkthrough of Figma for UI/UX design."
+      }
+    ],
+    "reading": [
+      {
+        "title": "Design Principles Notes",
+        "type": "text",
+        "content": "Learn about usability, accessibility, and user-centered design."
+      }
+    ]
+  }
+}

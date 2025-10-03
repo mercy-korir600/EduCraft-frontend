@@ -49,7 +49,7 @@ const Login = () => {
 
   return (
     <PageWrapper>
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-emerald-200 via-emerald-50 to-emerald-300 dark:from bg-emerald-100 dark:to-emerald-300 p-6 
+    <div className="min-h-screen flex items-center justify-center  bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-200  dark:from bg-emerald-100 dark:to-emerald-300 p-6 
 animate-glow transition-all p-4">
       <div className="bg-white shadow-2xl rounded-2xl px-6 py-10 w-full max-w-md sm:px-8 lg:px-10 relative">
         {/* Alert */}
@@ -131,7 +131,8 @@ animate-glow mb-4">
             className="w-full bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
 animate-glow hover:bg-emerald-400 transition text-white py-3 rounded-xl font-semibold text-lg shadow-md"
           >
-             <Link to="/Student" className="text-emerald-400 font-semibold hover:underline">Log in</Link>
+             <Link to="/Onboarding"className="w-full bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900
+animate-glow hover:bg-emerald-500 transition text-white py-3 rounded-xl font-semibold text-lg shadow-md">Log in</Link>
           
           </button>
         </form>

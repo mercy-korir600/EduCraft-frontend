@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import CourseComponent from '../components/CourseComponent';
+import { useNavigate } from "react-router-dom";
 
 
 const Course = () => {

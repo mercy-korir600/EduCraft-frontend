@@ -52,7 +52,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-emerald-200 via-emerald-50 to-emerald-300
+    <div className="min-h-screen flex items-center justify-center  bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-200 
 animate-glow p-4">
       <div className="bg-white shadow-2xl rounded-2xl px-6 py-10 w-full max-w-md sm:px-8 lg:px-10 relative">
 
