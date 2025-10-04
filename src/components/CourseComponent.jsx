@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function CourseComponent() {
   const [studentData, setStudentData] = useState(null);
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("studentData"));
-    if (data) {
-      setStudentData(data);
+    const stored = localStorage.getItem("studentData");
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      setStudentData(parsed);
 
-      // ✅ fetch notes.json dynamically
+      // fetch notes.json from public folder
       fetch("/data/notes.json")
         .then((res) => res.json())
-        .then((allNotes) => {
-          const { careerGoal, learningPreferences } = data;
-          const careerNotes = allNotes[careerGoal] || {};
+        .then((data) => {
+          const career = parsed.careerGoal;
+          const prefs = parsed.learningPreferences || [];
 
           let collectedNotes = [];
-          learningPreferences.forEach((pref) => {
-            if (careerNotes[pref]) {
-              collectedNotes = [...collectedNotes, ...careerNotes[pref]];
-            }
-          });
+
+          if (career && data[career]) {
+            prefs.forEach((pref) => {
+              if (data[career][pref]) {
+                collectedNotes = [...collectedNotes, ...data[career][pref]];
+              }
+            });
+          }
 
           setNotes(collectedNotes);
         })
@@ -29,64 +33,65 @@ function CourseComponent() {
     }
   }, []);
 
-  return (
-    <div className="min-h-screen p-6 bg-gray-50">
-      {studentData && (
-        <>
-          <h1 className="text-2xl font-bold mb-2">
-            Welcome, {studentData.name}! 🎓
-          </h1>
-          <p className="text-gray-600">
-            Career Goal: <b>{studentData.careerGoal}</b>
-          </p>
-          <p className="text-gray-600 mb-6">
-            Learning Preferences:{" "}
-            {studentData.learningPreferences.join(", ")}
-          </p>
-        </>
-      )}
+  if (!studentData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-gray-600">
+        Loading student data...
+      </div>
+    );
+  }
 
-      <div className="space-y-4">
-        {notes.length > 0 ? (
-          notes.map((note, index) => (
+  return (
+    <div className="min-h-screen bg-gray-50 p-6">
+      <h1 className="text-3xl font-bold text-emerald-700 mb-2">
+        Welcome, {studentData.name}! 🎓
+      </h1>
+      <p className="text-gray-600 mb-6">
+        Career Goal: {studentData.careerGoal}
+      </p>
+
+      {notes.length > 0 ? (
+        <div className="space-y-8">
+          {notes.map((note, index) => (
             <div
               key={index}
-              className="p-4 bg-white rounded-lg shadow-md border border-gray-200"
+              className="p-4 bg-white rounded-lg shadow border border-gray-200"
             >
-              <h2 className="font-semibold text-lg">{note.title}</h2>
-              <p className="text-gray-600 mb-2">{note.description}</p>
+              <h2 className="text-xl font-semibold mb-2">{note.title}</h2>
 
               {note.type === "text" && (
-                <p className="text-gray-800">{note.content}</p>
+                <p className="text-gray-700">{note.content}</p>
               )}
+
               {note.type === "pdf" && (
-                <a
-                  href={note.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 underline"
-                >
-                  Open PDF
-                </a>
+                <div className="w-full h-[80vh] border rounded-lg overflow-hidden">
+                  <iframe
+                    src={note.url}
+                    title={note.title}
+                    width="100%"
+                    height="100%"
+                  ></iframe>
+                </div>
               )}
+
               {note.type === "video" && (
-                <a
-                  href={note.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-600 underline"
-                >
-                  Watch Video
-                </a>
+                <div className="aspect-w-16 aspect-h-9">
+                  <iframe
+                    src={note.url}
+                    title={note.title}
+                    className="w-full h-96 rounded-lg"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               )}
             </div>
-          ))
-        ) : (
-          <p className="text-gray-500">
-            No notes available for this combination yet.
-          </p>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-gray-600">
+          No notes available for this combination yet.
+        </p>
+      )}
     </div>
   );
 }

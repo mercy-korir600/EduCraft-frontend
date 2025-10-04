@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 function Onboarding() {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -45,18 +47,24 @@ function Onboarding() {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
-  const handleSubmit = () => {
-    // ✅ Save data to localStorage
-    localStorage.setItem("studentData", JSON.stringify(formData));
+ const handleSubmit = () => {
+  localStorage.setItem("studentData", JSON.stringify(formData));
+  // Update global user context
+  setUser({
+    name: formData.name,
+    email: formData.email,
+    careerGoal: formData.careerGoal,
+    grades: formData.grades,
+    studyTime: formData.studyTime,
+    learningPreferences: formData.learningPreferences,
+    hasCompletedOnboarding: true,
+  });
+  navigate("/course");
+};
 
-    // ✅ Navigate to Course page
-    navigate("/course");
-  };
 
-  // ============================
+ 
   // Step Components
-  // ============================
-
   // Step 1: Personal Info
   const PersonalInfoForm = () => (
     <div className="space-y-6">
@@ -327,9 +335,7 @@ function Onboarding() {
     </div>
   );
 
-  // ============================
   // Progress Steps
-  // ============================
   const steps = [
     { id: 1, name: "Personal Info" },
     { id: 2, name: "Career Goal" },
