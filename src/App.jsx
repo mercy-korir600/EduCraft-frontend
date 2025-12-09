@@ -9,7 +9,7 @@ import Onboarding from './pages/Onboarding';
 import Learningpath from './pages/Learningpath';
 import Course from './pages/Course';
 import Dashboard from './pages/Dashboard';
-import Progresstracker from './pages/ProgressTracker';
+import Progresstracker from './pages/Progresstracker';
 import Updateprofile from './pages/Updateprofile';
 import AskAI from './pages/AskAI';
 
