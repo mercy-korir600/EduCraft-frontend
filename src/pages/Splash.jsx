@@ -22,7 +22,7 @@ const Splash = () => {
   <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent 
     bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900 
     dark:from-emerald-600 dark:via-emerald-400 dark:to-emerald-700 animate-glow">
-    ThinkCrest
+    EduCraft
   </h1>
   {/* <HiLightBulb className='top-4 left-6 z-50' /> */}
 </div>
