@@ -419,8 +419,8 @@ function Onboarding() {
           </div>
         </div>
 
-        <div className="mt-8 text-center text-gray-500 text-sm">
-          <p>© 2025 Student Success Platform. All rights reserved.</p>
+        <div className="mt-20 text-center text-gray-500 text-sm">
+          <p>© 2025 Student Success Platform. Empowering Knowledge. Shaping Futures.</p>
         </div>
       </div>
     </div>

@@ -24,7 +24,6 @@ const Splash = () => {
     dark:from-emerald-600 dark:via-emerald-400 dark:to-emerald-700 animate-glow">
     EduCraft
   </h1>
-  {/* <HiLightBulb className='top-4 left-6 z-50' /> */}
 </div>
 
  <img

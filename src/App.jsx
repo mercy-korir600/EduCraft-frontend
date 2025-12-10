@@ -12,9 +12,10 @@ import Dashboard from './pages/Dashboard';
 import Progresstracker from './pages/Progresstracker';
 import Updateprofile from './pages/Updateprofile';
 import AskAI from './pages/AskAI';
+import NotFound from './pages/NotFound';
 
 function App() {
-  const location = useLocation(); // ✅ This now works
+  const location = useLocation();
 
   return (
     <AnimatePresence mode="wait">
@@ -29,6 +30,8 @@ function App() {
         <Route path="/Progresstracker" element={<Progresstracker />} />
         <Route path="/Updateprofile" element={<Updateprofile />} />
         <Route path="/Ask-AI" element={<AskAI />} />
+        {/* catch all route */}
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </AnimatePresence>
   );

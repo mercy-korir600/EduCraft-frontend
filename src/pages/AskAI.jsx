@@ -8,14 +8,8 @@ const AskAI = () => {
       {loading && (
         <div
           style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "#f0f0f0",
-            zIndex: 1,
+            position: "absolute",  width: "100%",  height: "100%",display: "flex",alignItems: "center",
+            justifyContent: "center", backgroundColor: "#f0f0f0", zIndex: 1,
           }}
         >
           Loading AI...
