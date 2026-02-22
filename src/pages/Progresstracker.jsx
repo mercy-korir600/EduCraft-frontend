@@ -7,7 +7,7 @@ const Progresstracker = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen font-serif">
       {/* Sidebar toggles based on state */}
       <Sidebar open={sidebarOpen} />
 

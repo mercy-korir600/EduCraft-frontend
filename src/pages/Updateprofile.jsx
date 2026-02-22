@@ -8,7 +8,7 @@ const Updateprofile = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen font-serif">
       <Sidebar open={sidebarOpen} />
 
       <div className="flex-1">

@@ -27,7 +27,7 @@ const Sidebar = () => {
   const userCourses = userGoal ? careerGoals[userGoal] || [] : [];
 
   return (
-    <nav className="w-64 bg-white shadow-md h-[calc(100vh-4rem)] sticky top-16">
+    <nav className="w-64 font-serif bg-white shadow-md h-[calc(100vh-4rem)] sticky top-16">
       {/* Career Goal Section */}
       <div className="p-4 border-b">
         <div className="text-sm text-gray-600">Career goal:</div>

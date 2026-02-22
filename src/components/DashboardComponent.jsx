@@ -14,7 +14,7 @@ const DashboardComponent = () => {
   ];
 
   return (
-    <div className='flex '>
+    <div className='flex font-serif'>
      <div className="p-6 bg-gray-50 min-h-screen flex-1">
       <h1 className="text-3xl font-bold text-emerald-700 mb-8 text-center">📊 Dashboard Overview</h1>
       

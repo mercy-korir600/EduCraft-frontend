@@ -11,7 +11,7 @@ const Splash = () => {
   return (
     <div>
       <PageWrapper>
-        <div className="min-h-screen flex flex-col items-center justify-center 
+        <div className="min-h-screen font-serif flex flex-col items-center justify-center 
           bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-200 
           dark:from-emerald-200 dark:via-emerald-50 dark:bg-emerald-100 dark:to-emerald-300 
           p-6 text-center transition-all">

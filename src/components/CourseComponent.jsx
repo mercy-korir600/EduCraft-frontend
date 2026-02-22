@@ -42,7 +42,7 @@ function CourseComponent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen font-serif bg-gray-50 p-6">
       <h1 className="text-3xl font-bold text-emerald-700 mb-2">
         Welcome, {studentData.name}! 🎓
       </h1>

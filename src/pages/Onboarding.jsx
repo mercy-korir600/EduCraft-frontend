@@ -67,8 +67,8 @@ function Onboarding() {
   // Step Components
   // Step 1: Personal Info
   const PersonalInfoForm = () => (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-emerald-700">Personal Information</h2>
+    <div className="space-y-6 font-serif">
+      <h2 className="text-2xl font-bold text-emerald-700 ">Personal Information</h2>
       <p className="text-gray-600">Let's start with some basic information about you</p>
 
       <div className="space-y-4">
@@ -111,7 +111,7 @@ function Onboarding() {
 
   // Step 2: Career Goal
   const CareerGoalSelection = () => (
-    <div className="space-y-6">
+    <div className="space-y-6 font-serif">
       <h2 className="text-2xl font-bold text-emerald-700">Career Goals</h2>
       <p className="text-gray-600">What career path are you interested in pursuing?</p>
 
@@ -160,7 +160,7 @@ function Onboarding() {
 
   // Step 3: Grades
   const GradesInput = () => (
-    <div className="space-y-6">
+    <div className="space-y-6 font-serif">
       <h2 className="text-2xl font-bold text-emerald-700">Academic Performance</h2>
       <p className="text-gray-600">What is your current average grade?</p>
 
@@ -203,7 +203,7 @@ function Onboarding() {
 
   // Step 4: Study Availability
   const StudyAvailability = () => (
-    <div className="space-y-6">
+    <div className="space-y-6 font-serif">
       <h2 className="text-2xl font-bold text-emerald-700">Study Availability</h2>
       <p className="text-gray-600">How many hours per week can you dedicate to studying?</p>
 
@@ -240,7 +240,7 @@ function Onboarding() {
 
   // Step 5: Learning Preferences
   const LearningPreferences = () => (
-    <div className="space-y-6">
+    <div className="space-y-6 font-serif">
       <h2 className="text-2xl font-bold text-emerald-700">Learning Preferences</h2>
       <p className="text-gray-600">Select your preferred learning styles</p>
 
@@ -294,7 +294,7 @@ function Onboarding() {
 
   // Step 6: Confirmation
   const ConfirmationPage = () => (
-    <div className="space-y-8">
+    <div className="space-y-8 font-serif">
       <h2 className="text-2xl font-bold text-emerald-700">Review & Submit</h2>
       <p className="text-gray-600">Please review your information before submitting</p>
 
@@ -346,7 +346,7 @@ function Onboarding() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-200 py-12 px-4">
+    <div className="min-h-screen font-serif bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-200 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800">Student Onboarding</h1>

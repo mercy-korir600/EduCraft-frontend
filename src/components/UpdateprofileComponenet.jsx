@@ -93,7 +93,7 @@ const UpdateProfileComponent = () => {
   );
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
+    <div className="p-6 max-w-3xl font-serif mx-auto">
       <h1 className="text-2xl font-bold mb-6 text-emerald-700">
         Update Your Profile
       </h1>

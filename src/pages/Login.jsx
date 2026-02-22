@@ -50,7 +50,7 @@ const Login = () => {
 
   return (
     <PageWrapper>
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-200 p-4">
+      <div className="min-h-screen font-serif flex items-center justify-center bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-200 p-4">
         <div className="bg-white shadow-2xl rounded-2xl px-6 py-10 w-full max-w-md relative">
 
           {message.text && (

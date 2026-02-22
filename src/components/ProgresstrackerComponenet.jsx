@@ -52,7 +52,7 @@ const ProgresstrackerComponent = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 font-serif">
       <h1 className="text-2xl font-bold mb-6">Progress Tracker</h1>
 
       {/* Overall Progress */}
