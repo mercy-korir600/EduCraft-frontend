@@ -8,15 +8,15 @@ const Updateprofile = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen font-serif">
-      <Sidebar open={sidebarOpen} />
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <Sidebar isOpen={sidebarOpen} toggleOpen={setSidebarOpen} />
 
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col min-w-0">
         <Header isOpen={sidebarOpen} toggleOpen={setSidebarOpen} />
 
-        <div className="p-4">
+        <main className="flex-1 overflow-x-hidden p-4 md:p-6 lg:p-8">
           <UpdateprofileComponent/>  
-        </div>
+        </main>
       </div>
     </div>
   );

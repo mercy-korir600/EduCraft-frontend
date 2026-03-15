@@ -1,36 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 const ThemeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Apply theme on initial load
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setDarkMode(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setDarkMode(false);
-    }
-  }, []);
-
-  // Update theme when toggled
-  useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
+  const { darkMode, toggleTheme } = useTheme();
 
   return (
     <button
-      onClick={() => setDarkMode(!darkMode)}
-      className="absolute top-4 right-4 p-2 bg-emerald-200 dark:bg-emerald-700 text-xl rounded-full transition"
+      onClick={toggleTheme}
+      className="p-2 bg-emerald-200 dark:bg-emerald-700 text-xl rounded-full transition-all duration-300 transform hover:scale-110"
+      aria-label="Toggle Theme"
     >
       {darkMode ? "🌙" : "☀️"}
     </button>

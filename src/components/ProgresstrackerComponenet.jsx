@@ -52,21 +52,21 @@ const ProgresstrackerComponent = () => {
   };
 
   return (
-    <div className="p-6 font-serif">
-      <h1 className="text-2xl font-bold mb-6">Progress Tracker</h1>
+    <div className="p-6 font-serif transition-colors duration-300">
+      <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">Progress Tracker</h1>
 
       {/* Overall Progress */}
-      <div className="bg-white p-4 rounded-lg shadow mb-6">
-        <h2 className="font-semibold mb-4">Overall Completion</h2>
-        <div className="w-full bg-gray-200 rounded-full h-4 mb-2">
+      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow mb-6 transition-colors duration-300">
+        <h2 className="font-semibold mb-4 text-gray-700 dark:text-gray-200">Overall Completion</h2>
+        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 mb-2">
           <div
-            className="bg-emerald-600 h-4 rounded-full"
+            className="bg-emerald-600 dark:bg-emerald-500 h-4 rounded-full transition-all duration-500"
             style={{
               width: `${calculateOverallProgress(courses)}%`
             }}
           ></div>
         </div>
-        <p className="text-right font-medium">
+        <p className="text-right font-medium text-gray-600 dark:text-gray-400">
           {calculateOverallProgress(courses)}% Complete
         </p>
       </div>
@@ -74,18 +74,18 @@ const ProgresstrackerComponent = () => {
       {/* Courses List */}
       <div className="space-y-6">
         {courses.map(course => (
-          <div key={course.id} className="bg-white p-4 rounded-lg shadow">
+          <div key={course.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow transition-colors duration-300">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold">{course.title}</h2>
-              <span className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm">
+              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">{course.title}</h2>
+              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400 rounded-full text-sm">
                 {course.progress}% Complete
               </span>
             </div>
 
             {/* Progress Bar */}
-            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-4">
               <div
-                className="bg-emerald-600 h-2.5 rounded-full"
+                className="bg-emerald-600 dark:bg-emerald-500 h-2.5 rounded-full transition-all duration-500"
                 style={{ width: `${course.progress}%` }}
               ></div>
             </div>
@@ -95,14 +95,14 @@ const ProgresstrackerComponent = () => {
               {course.topics.map(topic => (
                 <li
                   key={topic.id}
-                  className="flex items-center p-2 hover:bg-gray-50 rounded"
+                  className="flex items-center p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded transition-colors"
                 >
                   <button
                     onClick={() => toggleTopicComplete(course.id, topic.id)}
-                    className={`w-5 h-5 rounded mr-3 flex items-center justify-center ${
+                    className={`w-5 h-5 rounded mr-3 flex items-center justify-center transition-colors ${
                       topic.completed
                         ? 'bg-emerald-500 text-white'
-                        : 'border-2 border-gray-300'
+                        : 'border-2 border-gray-300 dark:border-gray-600'
                     }`}
                   >
                     {topic.completed && (
@@ -121,7 +121,11 @@ const ProgresstrackerComponent = () => {
                       </svg>
                     )}
                   </button>
-                  <span className={topic.completed ? 'line-through text-gray-500' : ''}>
+                  <span className={`${
+                    topic.completed 
+                      ? 'line-through text-gray-500 dark:text-gray-500' 
+                      : 'text-gray-700 dark:text-gray-300'
+                  }`}>
                     {topic.name}
                   </span>
                 </li>

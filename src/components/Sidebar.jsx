@@ -1,159 +1,214 @@
-// Sidebar.jsx
 import React, { useState, useContext, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
-import { MdDashboardCustomize } from "react-icons/md";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import { MdDashboardCustomize, MdOutlineLibraryBooks, MdOutlineQuiz } from "react-icons/md";
 import { SiChatbot, SiPivotaltracker } from "react-icons/si";
 import { CgProfile } from "react-icons/cg";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiHelpCircle, FiSettings } from "react-icons/fi";
 import { UserContext } from "../context/UserContext"; 
+import { motion, AnimatePresence } from "framer-motion";
 
-// Map of career goal -> courses
 const careerGoals = {
   "Software Engineer": ["React", "Node.js", "Algorithms"],
   "Data Scientist": ["Python", "Machine Learning", "Statistics"],
   "UX Designer": ["Figma", "User Research", "Prototyping"],
 };
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggleOpen }) => {
   const { user } = useContext(UserContext); 
   const userGoal = user?.careerGoal ?? null;
   const [coursesOpen, setCoursesOpen] = useState(false);
+  const location = useLocation();
 
-  // Close dropdown if no userGoal
   useEffect(() => {
     if (!userGoal || !careerGoals[userGoal]) setCoursesOpen(false);
   }, [userGoal]);
 
+  // Close sidebar on mobile when route changes
+  useEffect(() => {
+    if (isOpen && window.innerWidth < 1024) {
+      toggleOpen(false);
+    }
+  }, [location.pathname]);
+
   const userCourses = userGoal ? careerGoals[userGoal] || [] : [];
 
+  const sidebarVariants = {
+    open: { x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
+    closed: { x: "-100%", transition: { type: "spring", stiffness: 300, damping: 30 } }
+  };
+
   return (
-    <nav className="w-64 font-serif bg-white shadow-md h-[calc(100vh-4rem)] sticky top-16">
-      {/* Career Goal Section */}
-      <div className="p-4 border-b">
-        <div className="text-sm text-gray-600">Career goal:</div>
-        <div className="font-medium text-emerald-700">
-          {userGoal ? (
-            userGoal
-          ) : (
-            <Link to="/updateprofile" className="text-sm text-emerald-600 underline">
-              Set your career goal
-            </Link>
-          )}
-        </div>
-      </div>
+    <>
+      {/* Mobile Backdrop */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => toggleOpen(false)}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+          />
+        )}
+      </AnimatePresence>
 
-      <ul className="py-4">
-        <SidebarItem
-          to="/Dashboard"
-          icon={<MdDashboardCustomize className="text-2xl" />}
-          label="Dashboard"
-        />
+      <motion.nav
+        variants={sidebarVariants}
+        initial="closed"
+        animate={isOpen || window.innerWidth >= 1024 ? "open" : "closed"}
+        className={`fixed lg:sticky top-0 left-0 bottom-0 w-72 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 z-50 lg:z-30 h-screen transition-colors duration-300 overflow-y-auto no-scrollbar`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Header/Logo for Mobile */}
+          <div className="p-6 lg:hidden flex justify-between items-center border-b dark:border-gray-700">
+            <span className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">EduCraft</span>
+            <button onClick={() => toggleOpen(false)} className="p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+              <FiSettings />
+            </button>
+          </div>
 
-        {/* Courses Dropdown */}
-        <li className="px-4">
-          <button
-            onClick={() => setCoursesOpen((prev) => !prev)}
-            className="flex items-center w-full py-3 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
-          >
-            <MdDashboardCustomize className="text-2xl mr-3" />
-            <span className="flex-1 text-left">Courses</span>
-            <FiChevronDown
-              className={`transition-transform duration-200 ${
-                coursesOpen ? "rotate-180" : "rotate-0"
-              }`}
-            />
-          </button>
-
-          {/* Dropdown content */}
-          {coursesOpen && (
-            <div className="pl-12 mt-2">
-              {userGoal ? (
-                userCourses.length > 0 ? (
-                  <ul>
-                    {userCourses.map((course) => (
-                      <li key={course} className="py-1">
-                        <NavLink
-                          to={`/course/${encodeURIComponent(course)}`}
-                          className={({ isActive }) =>
-                            `block text-sm py-1 rounded ${
-                              isActive
-                                ? "text-emerald-700 font-medium"
-                                : "text-gray-700 hover:text-emerald-600"
-                            }`
-                          }
-                        >
-                          {course}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
+          {/* Career Goal Section */}
+          <div className="p-6 border-b dark:border-gray-700">
+            <div className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">Your Journey</div>
+            <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-xl border border-emerald-100 dark:border-emerald-800/50">
+              <div className="text-xs text-emerald-600 dark:text-emerald-400 font-medium mb-1">Career Goal</div>
+              <div className="font-bold text-gray-800 dark:text-gray-100">
+                {userGoal ? (
+                  userGoal
                 ) : (
-                  <div className="text-sm text-gray-500">
-                    No courses available for "{userGoal}".
-                  </div>
-                )
-              ) : (
-                <div className="text-sm text-gray-500">
-                  No career goal selected.{" "}
-                  <Link to="/updateprofile" className="text-emerald-600 underline">
-                    Set it now
+                  <Link to="/updateprofile" className="text-sm text-emerald-600 dark:text-emerald-400 underline decoration-2 underline-offset-4">
+                    Set your goal
                   </Link>
+                )}
+              </div>
+              {userGoal && (
+                <div className="mt-3 w-full bg-emerald-200 dark:bg-emerald-800 h-1.5 rounded-full overflow-hidden">
+                  <div className="bg-emerald-600 dark:bg-emerald-400 h-full w-1/3 rounded-full" />
                 </div>
               )}
             </div>
-          )}
-        </li>
+          </div>
 
-        <SidebarItem
-          to="/Progresstracker"
-          icon={<SiPivotaltracker className="text-2xl" />}
-          label="Progress Tracker"
-        />
-        <SidebarItem
-          to="/updateprofile"
-          icon={<CgProfile className="text-2xl" />}
-          label="Update Profile"
-        />
-        <SidebarItem
-          to="/ask-ai"
-          icon={<SiChatbot className="text-2xl" />}
-          label="Ask AI Assistant"
-        />
-      </ul>
+          {/* Main Navigation */}
+          <div className="flex-1 py-6 px-4 space-y-1">
+            <SidebarItem
+              to="/Dashboard"
+              icon={<MdDashboardCustomize />}
+              label="Dashboard"
+            />
 
-      {/* Support Section */}
-      <div className="px-4 py-6 border-t">
-        <div className="bg-emerald-50 p-4 rounded-lg">
-          <h3 className="font-medium text-emerald-700">Need help?</h3>
-          <p className="text-sm text-gray-600 mt-1">
-            Our support team is available 24/7
-          </p>
-          <button className="mt-2 w-full py-2 bg-emerald-600 text-white rounded-md text-sm font-medium hover:bg-emerald-700">
-            Contact Support
-          </button>
+            <div className="pt-2">
+              <button
+                onClick={() => setCoursesOpen((prev) => !prev)}
+                className={`flex items-center w-full py-3 px-4 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-700 dark:hover:text-emerald-400 transition-all group ${coursesOpen ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400' : ''}`}
+              >
+                <MdOutlineLibraryBooks className="text-2xl mr-3 group-hover:scale-110 transition-transform" />
+                <span className="flex-1 text-left font-medium">My Courses</span>
+                <FiChevronDown
+                  className={`transition-transform duration-300 ${
+                    coursesOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {coursesOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pl-12 pr-4 py-2 space-y-1">
+                      {userGoal && userCourses.length > 0 ? (
+                        userCourses.map((course) => (
+                          <NavLink
+                            key={course}
+                            to={`/course/${encodeURIComponent(course)}`}
+                            className={({ isActive }) =>
+                              `block py-2 px-3 rounded-lg text-sm transition-all ${
+                                isActive
+                                  ? "bg-emerald-100 dark:bg-emerald-800 text-emerald-700 dark:text-emerald-300 font-bold"
+                                  : "text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-300 hover:translate-x-1"
+                              }`
+                            }
+                          >
+                            {course}
+                          </NavLink>
+                        ))
+                      ) : (
+                        <div className="text-xs text-gray-400 dark:text-gray-500 py-2 italic">
+                          No courses to show.
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <SidebarItem
+              to="/Progresstracker"
+              icon={<SiPivotaltracker />}
+              label="Progress Tracker"
+            />
+            <SidebarItem
+              to="/ask-ai"
+              icon={<SiChatbot />}
+              label="AI Tutor"
+              isNew
+            />
+            <SidebarItem
+              to="/updateprofile"
+              icon={<CgProfile />}
+              label="My Profile"
+            />
+          </div>
+
+          {/* Bottom Section */}
+          <div className="p-6 border-t dark:border-gray-700">
+            <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-2xl p-5 text-white shadow-lg shadow-emerald-900/20">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 bg-white/20 rounded-lg">
+                  <FiHelpCircle className="text-xl" />
+                </div>
+                <h3 className="font-bold">Support</h3>
+              </div>
+              <p className="text-xs text-emerald-100 mb-4 leading-relaxed">
+                Stuck on a problem? Our team is ready to help you 24/7.
+              </p>
+              <button className="w-full py-2.5 bg-white text-emerald-700 rounded-xl text-sm font-bold hover:bg-emerald-50 transition-colors">
+                Contact Us
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
+      </motion.nav>
+    </>
   );
 };
 
-// Reusable Sidebar Item
-const SidebarItem = ({ to, icon, label }) => (
-  <li className="px-4">
-    <NavLink
-      to={to}
-      className={({ isActive }) =>
-        `flex items-center py-3 px-4 rounded-lg transition-colors ${
-          isActive
-            ? "bg-emerald-100 text-emerald-700 font-medium"
-            : "text-gray-600 hover:bg-gray-100"
-        }`
-      }
-    >
-      <span className="mr-3">{icon}</span>
-      <span>{label}</span>
-    </NavLink>
-  </li>
+const SidebarItem = ({ to, icon, label, isNew }) => (
+  <NavLink
+    to={to}
+    className={({ isActive }) =>
+      `flex items-center py-3 px-4 rounded-xl transition-all group ${
+        isActive
+          ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/20"
+          : "text-gray-600 dark:text-gray-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-700 dark:hover:text-emerald-400"
+      }`
+    }
+  >
+    <span className={`text-2xl mr-3 transition-transform group-hover:scale-110`}>
+      {icon}
+    </span>
+    <span className="flex-1 font-medium">{label}</span>
+    {isNew && (
+      <span className="bg-amber-400 text-amber-900 text-[10px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-tighter">
+        New
+      </span>
+    )}
+  </NavLink>
 );
 
 export default Sidebar;

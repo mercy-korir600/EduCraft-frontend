@@ -7,19 +7,15 @@ const Progresstracker = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen font-serif">
-      {/* Sidebar toggles based on state */}
-      <Sidebar open={sidebarOpen} />
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <Sidebar isOpen={sidebarOpen} toggleOpen={setSidebarOpen} />
 
-      <div className="flex-1">
-        {/* Header toggles sidebar */}
+      <div className="flex-1 flex flex-col min-w-0">
         <Header isOpen={sidebarOpen} toggleOpen={setSidebarOpen} />
 
-        {/* Main content goes here */}
-        <div className="p-4">
-          {/* Student dashboard or content */}
+        <main className="flex-1 overflow-x-hidden p-4 md:p-6 lg:p-8">
           <ProgresstrackerComponent />
-        </div>
+        </main>
       </div>
     </div>
   );

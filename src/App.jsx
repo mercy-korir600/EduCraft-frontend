@@ -1,6 +1,6 @@
-// App.jsx
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import Splash from './pages/Splash';
 import Login from './pages/Login';
@@ -21,17 +21,69 @@ function App() {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Splash />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/Onboarding" element={<Onboarding />} />
-        <Route path="/Learningpath" element={<Learningpath />} />
-        <Route path="/Course" element={<Course />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/Progresstracker" element={<Progresstracker />} />
-        <Route path="/Updateprofile" element={<Updateprofile />} />
-        <Route path="/Ask-AI" element={<AskAI />} />
-        {/* catch all route */}
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+        {/* PROTECTED ROUTES */}
+        <Route
+          path="/Onboarding"
+          element={
+            <ProtectedRoute>
+              <Onboarding />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/learningpath"
+          element={
+            <ProtectedRoute>
+              <Learningpath />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/progresstracker"
+          element={
+            <ProtectedRoute>
+              <Progresstracker />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/updateprofile"
+          element={
+            <ProtectedRoute>
+              <Updateprofile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/ask-ai"
+          element={
+            <ProtectedRoute>
+              <AskAI />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* PUBLIC */}
+        <Route path="/course" element={<Course />} />
+
+        {/* catch all */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );

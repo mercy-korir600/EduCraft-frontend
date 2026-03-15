@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import ThemeToggle from "../components/ThemeToggle";
 
 function Onboarding() {
   const navigate = useNavigate();
@@ -47,51 +48,47 @@ function Onboarding() {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
- const handleSubmit = () => {
-  localStorage.setItem("studentData", JSON.stringify(formData));
-  // Update global user context
-  setUser({
-    name: formData.name,
-    email: formData.email,
-    careerGoal: formData.careerGoal,
-    grades: formData.grades,
-    studyTime: formData.studyTime,
-    learningPreferences: formData.learningPreferences,
-    hasCompletedOnboarding: true,
-  });
-  navigate("/course");
-};
+  const handleSubmit = () => {
+    localStorage.setItem("studentData", JSON.stringify(formData));
+    setUser({
+      name: formData.name,
+      email: formData.email,
+      careerGoal: formData.careerGoal,
+      grades: formData.grades,
+      studyTime: formData.studyTime,
+      learningPreferences: formData.learningPreferences,
+      hasCompletedOnboarding: true,
+    });
+    navigate("/dashboard");
+  };
 
-
- 
-  // Step Components
   // Step 1: Personal Info
   const PersonalInfoForm = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700 ">Personal Information</h2>
-      <p className="text-gray-600">Let's start with some basic information about you</p>
+      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Personal Information</h2>
+      <p className="text-gray-600 dark:text-gray-400">Let's start with some basic information about you</p>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
             placeholder="John Smith"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
             placeholder="john@example.com"
           />
         </div>
@@ -100,7 +97,7 @@ function Onboarding() {
       <div className="flex justify-end">
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30 disabled:opacity-50"
           disabled={!formData.name || !formData.email}
         >
           Continue
@@ -112,29 +109,31 @@ function Onboarding() {
   // Step 2: Career Goal
   const CareerGoalSelection = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700">Career Goals</h2>
-      <p className="text-gray-600">What career path are you interested in pursuing?</p>
+      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Career Goals</h2>
+      <p className="text-gray-600 dark:text-gray-400">What career path are you interested in pursuing?</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {careerOptions.map((career, index) => (
           <div
             key={index}
-            className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+            className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${
               formData.careerGoal === career
-                ? "border-emerald-600 bg-emerald-50"
-                : "border-gray-200 hover:border-emerald-300"
+                ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30"
+                : "border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-500"
             }`}
             onClick={() => setFormData({ ...formData, careerGoal: career })}
           >
             <div className="flex items-center">
               <div
-                className={`w-5 h-5 rounded-full border-2 mr-3 ${
+                className={`w-5 h-5 rounded-full border-2 mr-3 transition-colors ${
                   formData.careerGoal === career
                     ? "border-emerald-600 bg-emerald-600"
-                    : "border-gray-300"
+                    : "border-gray-300 dark:border-gray-600"
                 }`}
               ></div>
-              <span className="font-medium">{career}</span>
+              <span className={`font-medium ${formData.careerGoal === career ? "text-emerald-800 dark:text-emerald-300" : "text-gray-700 dark:text-gray-300"}`}>
+                {career}
+              </span>
             </div>
           </div>
         ))}
@@ -143,13 +142,13 @@ function Onboarding() {
       <div className="flex justify-between">
         <button
           onClick={prevStep}
-          className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          className="px-6 py-2 border border-gray-300 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
           Back
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30 disabled:opacity-50"
           disabled={!formData.careerGoal}
         >
           Continue
@@ -161,17 +160,17 @@ function Onboarding() {
   // Step 3: Grades
   const GradesInput = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700">Academic Performance</h2>
-      <p className="text-gray-600">What is your current average grade?</p>
+      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Academic Performance</h2>
+      <p className="text-gray-600 dark:text-gray-400">What is your current average grade?</p>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Your Current Grade</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Current Grade</label>
           <select
             name="grades"
             value={formData.grades}
             onChange={handleChange}
-            className="appearance-none w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 hover:border-emerald-400 transition-all"
+            className="appearance-none w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 hover:border-emerald-400 transition-all cursor-pointer"
           >
             <option value="">Select your grade</option>
             <option value="A">A (90-100%)</option>
@@ -186,13 +185,13 @@ function Onboarding() {
       <div className="flex justify-between">
         <button
           onClick={prevStep}
-          className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          className="px-6 py-2 border border-gray-300 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
           Back
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30 disabled:opacity-50"
           disabled={!formData.grades}
         >
           Continue
@@ -204,8 +203,8 @@ function Onboarding() {
   // Step 4: Study Availability
   const StudyAvailability = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700">Study Availability</h2>
-      <p className="text-gray-600">How many hours per week can you dedicate to studying?</p>
+      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Study Availability</h2>
+      <p className="text-gray-600 dark:text-gray-400">How many hours per week can you dedicate to studying?</p>
 
       <div className="space-y-8">
         <input
@@ -216,21 +215,21 @@ function Onboarding() {
           step="5"
           value={formData.studyTime}
           onChange={handleChange}
-          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+          className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-emerald-600"
         />
-        <p className="text-gray-700">Hours per week: {formData.studyTime}</p>
+        <p className="text-gray-700 dark:text-gray-300 font-medium">Hours per week: <span className="text-emerald-600 dark:text-emerald-400 text-xl font-bold ml-2">{formData.studyTime}</span></p>
       </div>
 
       <div className="flex justify-between">
         <button
           onClick={prevStep}
-          className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          className="px-6 py-2 border border-gray-300 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
           Back
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30"
         >
           Continue
         </button>
@@ -241,17 +240,17 @@ function Onboarding() {
   // Step 5: Learning Preferences
   const LearningPreferences = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700">Learning Preferences</h2>
-      <p className="text-gray-600">Select your preferred learning styles</p>
+      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Learning Preferences</h2>
+      <p className="text-gray-600 dark:text-gray-400">Select your preferred learning styles</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {learningOptions.map((option) => (
           <div
             key={option.id}
-            className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+            className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${
               formData.learningPreferences.includes(option.id)
-                ? "border-emerald-600 bg-emerald-50"
-                : "border-gray-200 hover:border-emerald-300"
+                ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30"
+                : "border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-500"
             }`}
             onClick={() => {
               const updatedPreferences = formData.learningPreferences.includes(option.id)
@@ -262,13 +261,15 @@ function Onboarding() {
           >
             <div className="flex items-start">
               <div
-                className={`w-5 h-5 rounded border-2 mt-0.5 mr-3 flex-shrink-0 ${
+                className={`w-5 h-5 rounded border-2 mt-0.5 mr-3 flex-shrink-0 transition-colors ${
                   formData.learningPreferences.includes(option.id)
                     ? "border-emerald-600 bg-emerald-600"
-                    : "border-gray-300"
+                    : "border-gray-300 dark:border-gray-600"
                 }`}
               ></div>
-              <span>{option.label}</span>
+              <span className={`font-medium ${formData.learningPreferences.includes(option.id) ? "text-emerald-800 dark:text-emerald-300" : "text-gray-700 dark:text-gray-300"}`}>
+                {option.label}
+              </span>
             </div>
           </div>
         ))}
@@ -277,13 +278,13 @@ function Onboarding() {
       <div className="flex justify-between">
         <button
           onClick={prevStep}
-          className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          className="px-6 py-2 border border-gray-300 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
           Back
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900 animate-glow text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30 disabled:opacity-50"
           disabled={formData.learningPreferences.length === 0}
         >
           Continue
@@ -295,41 +296,58 @@ function Onboarding() {
   // Step 6: Confirmation
   const ConfirmationPage = () => (
     <div className="space-y-8 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700">Review & Submit</h2>
-      <p className="text-gray-600">Please review your information before submitting</p>
+      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Review & Submit</h2>
+      <p className="text-gray-600 dark:text-gray-400">Please review your information before submitting</p>
 
-      <div className="bg-gray-50 rounded-xl p-6">
-        <h3 className="font-medium text-lg text-gray-800 mb-4">Your Information</h3>
+      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border dark:border-gray-700 transition-colors duration-300">
+        <h3 className="font-bold text-lg text-gray-800 dark:text-gray-100 mb-4 border-b dark:border-gray-700 pb-2">Your Profile Summary</h3>
 
-        <div className="space-y-2">
-          <p><strong>Name:</strong> {formData.name}</p>
-          <p><strong>Email:</strong> {formData.email}</p>
-          <p><strong>Career Goal:</strong> {formData.careerGoal}</p>
-          <p><strong>Grade:</strong> {formData.grades}</p>
-          <p><strong>Study Time:</strong> {formData.studyTime} hrs/week</p>
-          <p>
-            <strong>Preferences:</strong>{" "}
+        <div className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Full Name</p>
+            <p className="font-medium dark:text-gray-200">{formData.name}</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Email</p>
+            <p className="font-medium dark:text-gray-200">{formData.email}</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Career Goal</p>
+            <p className="font-medium text-emerald-600 dark:text-emerald-400">{formData.careerGoal}</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Academic Grade</p>
+            <p className="font-medium dark:text-gray-200">{formData.grades}</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Study Commitment</p>
+            <p className="font-medium dark:text-gray-200">{formData.studyTime} hrs/week</p>
+          </div>
+        </div>
+        <div className="mt-6 pt-4 border-t dark:border-gray-700">
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Learning Preferences</p>
+          <div className="flex flex-wrap gap-2">
             {formData.learningPreferences.map((pref) => (
-              <span key={pref} className="mr-2">
+              <span key={pref} className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-xs font-medium">
                 {learningOptions.find((opt) => opt.id === pref)?.label}
               </span>
             ))}
-          </p>
+          </div>
         </div>
       </div>
 
       <div className="flex justify-between">
         <button
           onClick={prevStep}
-          className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          className="px-6 py-2 border border-gray-300 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
           Back
         </button>
         <button
           onClick={handleSubmit}
-          className="px-6 py-2 bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-900 animate-glow text-white rounded-lg hover:bg-green-700 transition-colors"
+          className="px-8 py-3 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/30 font-bold"
         >
-          Submit Onboarding
+          Complete Onboarding
         </button>
       </div>
     </div>
@@ -337,79 +355,72 @@ function Onboarding() {
 
   // Progress Steps
   const steps = [
-    { id: 1, name: "Personal Info" },
-    { id: 2, name: "Career Goal" },
+    { id: 1, name: "Profile" },
+    { id: 2, name: "Career" },
     { id: 3, name: "Grades" },
-    { id: 4, name: "Study Time" },
-    { id: 5, name: "Preferences" },
-    { id: 6, name: "Confirmation" },
+    { id: 4, name: "Time" },
+    { id: 5, name: "Styles" },
+    { id: 6, name: "Finish" },
   ];
 
   return (
-    <div className="min-h-screen font-serif bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-200 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">Student Onboarding</h1>
-          <p className="mt-2 text-gray-600">Complete your profile to get personalized study recommendations</p>
+    <div className="min-h-screen font-serif bg-emerald-50 dark:bg-gray-950 py-12 px-4 transition-colors duration-500 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-emerald-200 dark:bg-emerald-900/20 rounded-full blur-3xl opacity-50" />
+      <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-emerald-300 dark:bg-emerald-800/20 rounded-full blur-3xl opacity-50" />
+
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="flex justify-between items-center mb-10">
+          <div className="text-left">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">Student Onboarding</h1>
+            <p className="mt-2 text-gray-600 dark:text-gray-400">Complete your profile to unlock personalized features</p>
+          </div>
+          <ThemeToggle />
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border dark:border-gray-800 transition-colors duration-300">
           {/* Progress Bar */}
-          <div className="px-6 pt-6">
-            <div className="flex justify-between mb-1">
+          <div className="px-6 pt-10 border-b dark:border-gray-800 pb-6 bg-gray-50/50 dark:bg-gray-800/30">
+            <div className="flex justify-between relative px-2">
+              {/* Connector line */}
+              <div className="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 dark:bg-gray-700 -z-0" />
+              
               {steps.map((step) => (
                 <div
                   key={step.id}
-                  className={`w-1/6 flex flex-col items-center relative ${
+                  className={`flex flex-col items-center relative z-10 ${
                     step.id < currentStep
                       ? "text-emerald-600"
                       : step.id === currentStep
-                      ? "text-emerald-800 font-bold"
-                      : "text-gray-500"
+                      ? "text-emerald-800 dark:text-emerald-400 font-bold"
+                      : "text-gray-400 dark:text-gray-600"
                   }`}
                 >
-                  <div className="flex items-center">
+                  <div
+                    className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      step.id < currentStep
+                        ? "bg-emerald-600 text-white"
+                        : step.id === currentStep
+                        ? "bg-white dark:bg-gray-900 border-2 border-emerald-600 ring-4 ring-emerald-100 dark:ring-emerald-900/30"
+                        : "bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700"
+                    }`}
+                  >
                     {step.id < currentStep ? (
-                      <div className="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center">
-                        <svg
-                          className="w-4 h-4 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                      </div>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                      </svg>
                     ) : (
-                      <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                          step.id === currentStep
-                            ? "bg-emerald-100 border-2 border-emerald-600"
-                            : "bg-gray-100 border-2 border-gray-300"
-                        }`}
-                      >
-                        {step.id}
-                      </div>
+                      <span className="text-sm">{step.id}</span>
                     )}
                   </div>
-                  <div className="text-xs mt-1 text-center">{step.name}</div>
-
-                  {step.id < 6 && (
-                    <div
-                      className={`absolute top-4 left-1/2 transform -translate-y-1/2 w-full h-1 ${
-                        step.id < currentStep ? "bg-emerald-600" : "bg-gray-300"
-                      }`}
-                      style={{ left: "calc(50% + 1rem)" }}
-                    ></div>
-                  )}
+                  <div className="text-[10px] md:text-xs mt-2 uppercase tracking-tighter font-bold">{step.name}</div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Form Content */}
-          <div className="p-6 md:p-8">
+          <div className="p-6 md:p-12">
             {currentStep === 1 && <PersonalInfoForm />}
             {currentStep === 2 && <CareerGoalSelection />}
             {currentStep === 3 && <GradesInput />}
@@ -419,8 +430,8 @@ function Onboarding() {
           </div>
         </div>
 
-        <div className="mt-20 text-center text-gray-500 text-sm">
-          <p>© 2025 Student Success Platform. Empowering Knowledge. Shaping Futures.</p>
+        <div className="mt-12 text-center text-gray-500 dark:text-gray-600 text-xs">
+          <p>© 2026 EduCraft. All rights reserved. Your data is secure and private.</p>
         </div>
       </div>
     </div>
