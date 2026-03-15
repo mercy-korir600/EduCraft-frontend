@@ -65,7 +65,7 @@ function Onboarding() {
   // Step 1: Personal Info
   const PersonalInfoForm = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Personal Information</h2>
+      <h2 className="text-2xl font-bold text-brand-700 dark:text-brand-400">Personal Information</h2>
       <p className="text-gray-600 dark:text-gray-400">Let's start with some basic information about you</p>
 
       <div className="space-y-4">
@@ -76,7 +76,7 @@ function Onboarding() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors"
             placeholder="John Smith"
           />
         </div>
@@ -88,7 +88,7 @@ function Onboarding() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors"
             placeholder="john@example.com"
           />
         </div>
@@ -97,7 +97,7 @@ function Onboarding() {
       <div className="flex justify-end">
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30 disabled:opacity-50"
+          className="px-6 py-2 bg-brand-600 dark:bg-brand-700 text-white rounded-lg hover:bg-brand-700 dark:hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/30 disabled:opacity-50"
           disabled={!formData.name || !formData.email}
         >
           Continue
@@ -109,7 +109,7 @@ function Onboarding() {
   // Step 2: Career Goal
   const CareerGoalSelection = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Career Goals</h2>
+      <h2 className="text-2xl font-bold text-brand-700 dark:text-brand-400">Career Goals</h2>
       <p className="text-gray-600 dark:text-gray-400">What career path are you interested in pursuing?</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -118,8 +118,8 @@ function Onboarding() {
             key={index}
             className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${
               formData.careerGoal === career
-                ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30"
-                : "border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-500"
+                ? "border-brand-600 bg-brand-50 dark:bg-brand-900/30"
+                : "border-gray-200 dark:border-gray-700 hover:border-brand-300 dark:hover:border-brand-500"
             }`}
             onClick={() => setFormData({ ...formData, careerGoal: career })}
           >
@@ -127,11 +127,11 @@ function Onboarding() {
               <div
                 className={`w-5 h-5 rounded-full border-2 mr-3 transition-colors ${
                   formData.careerGoal === career
-                    ? "border-emerald-600 bg-emerald-600"
+                    ? "border-brand-600 bg-brand-600"
                     : "border-gray-300 dark:border-gray-600"
                 }`}
               ></div>
-              <span className={`font-medium ${formData.careerGoal === career ? "text-emerald-800 dark:text-emerald-300" : "text-gray-700 dark:text-gray-300"}`}>
+              <span className={`font-medium ${formData.careerGoal === career ? "text-brand-800 dark:text-brand-300" : "text-gray-700 dark:text-gray-300"}`}>
                 {career}
               </span>
             </div>
@@ -148,7 +148,7 @@ function Onboarding() {
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30 disabled:opacity-50"
+          className="px-6 py-2 bg-brand-600 dark:bg-brand-700 text-white rounded-lg hover:bg-brand-700 dark:hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/30 disabled:opacity-50"
           disabled={!formData.careerGoal}
         >
           Continue
@@ -160,7 +160,7 @@ function Onboarding() {
   // Step 3: Grades
   const GradesInput = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Academic Performance</h2>
+      <h2 className="text-2xl font-bold text-brand-700 dark:text-brand-400">Academic Performance</h2>
       <p className="text-gray-600 dark:text-gray-400">What is your current average grade?</p>
 
       <div className="space-y-4">
@@ -170,7 +170,7 @@ function Onboarding() {
             name="grades"
             value={formData.grades}
             onChange={handleChange}
-            className="appearance-none w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 hover:border-emerald-400 transition-all cursor-pointer"
+            className="appearance-none w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 hover:border-brand-400 transition-all cursor-pointer"
           >
             <option value="">Select your grade</option>
             <option value="A">A (90-100%)</option>
@@ -191,7 +191,7 @@ function Onboarding() {
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30 disabled:opacity-50"
+          className="px-6 py-2 bg-brand-600 dark:bg-brand-700 text-white rounded-lg hover:bg-brand-700 dark:hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/30 disabled:opacity-50"
           disabled={!formData.grades}
         >
           Continue
@@ -203,7 +203,7 @@ function Onboarding() {
   // Step 4: Study Availability
   const StudyAvailability = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Study Availability</h2>
+      <h2 className="text-2xl font-bold text-brand-700 dark:text-brand-400">Study Availability</h2>
       <p className="text-gray-600 dark:text-gray-400">How many hours per week can you dedicate to studying?</p>
 
       <div className="space-y-8">
@@ -215,9 +215,9 @@ function Onboarding() {
           step="5"
           value={formData.studyTime}
           onChange={handleChange}
-          className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+          className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-brand-600"
         />
-        <p className="text-gray-700 dark:text-gray-300 font-medium">Hours per week: <span className="text-emerald-600 dark:text-emerald-400 text-xl font-bold ml-2">{formData.studyTime}</span></p>
+        <p className="text-gray-700 dark:text-gray-300 font-medium">Hours per week: <span className="text-brand-600 dark:text-brand-400 text-xl font-bold ml-2">{formData.studyTime}</span></p>
       </div>
 
       <div className="flex justify-between">
@@ -229,7 +229,7 @@ function Onboarding() {
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30"
+          className="px-6 py-2 bg-brand-600 dark:bg-brand-700 text-white rounded-lg hover:bg-brand-700 dark:hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/30"
         >
           Continue
         </button>
@@ -240,7 +240,7 @@ function Onboarding() {
   // Step 5: Learning Preferences
   const LearningPreferences = () => (
     <div className="space-y-6 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Learning Preferences</h2>
+      <h2 className="text-2xl font-bold text-brand-700 dark:text-brand-400">Learning Preferences</h2>
       <p className="text-gray-600 dark:text-gray-400">Select your preferred learning styles</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -249,8 +249,8 @@ function Onboarding() {
             key={option.id}
             className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${
               formData.learningPreferences.includes(option.id)
-                ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30"
-                : "border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-500"
+                ? "border-brand-600 bg-brand-50 dark:bg-brand-900/30"
+                : "border-gray-200 dark:border-gray-700 hover:border-brand-300 dark:hover:border-brand-500"
             }`}
             onClick={() => {
               const updatedPreferences = formData.learningPreferences.includes(option.id)
@@ -263,11 +263,11 @@ function Onboarding() {
               <div
                 className={`w-5 h-5 rounded border-2 mt-0.5 mr-3 flex-shrink-0 transition-colors ${
                   formData.learningPreferences.includes(option.id)
-                    ? "border-emerald-600 bg-emerald-600"
+                    ? "border-brand-600 bg-brand-600"
                     : "border-gray-300 dark:border-gray-600"
                 }`}
               ></div>
-              <span className={`font-medium ${formData.learningPreferences.includes(option.id) ? "text-emerald-800 dark:text-emerald-300" : "text-gray-700 dark:text-gray-300"}`}>
+              <span className={`font-medium ${formData.learningPreferences.includes(option.id) ? "text-brand-800 dark:text-brand-300" : "text-gray-700 dark:text-gray-300"}`}>
                 {option.label}
               </span>
             </div>
@@ -284,7 +284,7 @@ function Onboarding() {
         </button>
         <button
           onClick={nextStep}
-          className="px-6 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/30 disabled:opacity-50"
+          className="px-6 py-2 bg-brand-600 dark:bg-brand-700 text-white rounded-lg hover:bg-brand-700 dark:hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/30 disabled:opacity-50"
           disabled={formData.learningPreferences.length === 0}
         >
           Continue
@@ -296,7 +296,7 @@ function Onboarding() {
   // Step 6: Confirmation
   const ConfirmationPage = () => (
     <div className="space-y-8 font-serif">
-      <h2 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Review & Submit</h2>
+      <h2 className="text-2xl font-bold text-brand-700 dark:text-brand-400">Review & Submit</h2>
       <p className="text-gray-600 dark:text-gray-400">Please review your information before submitting</p>
 
       <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border dark:border-gray-700 transition-colors duration-300">
@@ -313,7 +313,7 @@ function Onboarding() {
           </div>
           <div>
             <p className="text-xs text-gray-500 uppercase tracking-wider">Career Goal</p>
-            <p className="font-medium text-emerald-600 dark:text-emerald-400">{formData.careerGoal}</p>
+            <p className="font-medium text-brand-600 dark:text-brand-400">{formData.careerGoal}</p>
           </div>
           <div>
             <p className="text-xs text-gray-500 uppercase tracking-wider">Academic Grade</p>
@@ -328,7 +328,7 @@ function Onboarding() {
           <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Learning Preferences</p>
           <div className="flex flex-wrap gap-2">
             {formData.learningPreferences.map((pref) => (
-              <span key={pref} className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-xs font-medium">
+              <span key={pref} className="px-3 py-1 bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 rounded-full text-xs font-medium">
                 {learningOptions.find((opt) => opt.id === pref)?.label}
               </span>
             ))}
@@ -345,7 +345,7 @@ function Onboarding() {
         </button>
         <button
           onClick={handleSubmit}
-          className="px-8 py-3 bg-emerald-600 dark:bg-emerald-700 text-white rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/30 font-bold"
+          className="px-8 py-3 bg-brand-600 dark:bg-brand-700 text-white rounded-lg hover:bg-brand-700 dark:hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/30 font-bold"
         >
           Complete Onboarding
         </button>
@@ -364,10 +364,10 @@ function Onboarding() {
   ];
 
   return (
-    <div className="min-h-screen font-serif bg-emerald-50 dark:bg-gray-950 py-12 px-4 transition-colors duration-500 relative overflow-hidden">
+    <div className="min-h-screen font-serif bg-brand-50 dark:bg-gray-950 py-12 px-4 transition-colors duration-500 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-emerald-200 dark:bg-emerald-900/20 rounded-full blur-3xl opacity-50" />
-      <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-emerald-300 dark:bg-emerald-800/20 rounded-full blur-3xl opacity-50" />
+      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-brand-200 dark:bg-brand-900/20 rounded-full blur-3xl opacity-50" />
+      <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-brand-300 dark:bg-brand-800/20 rounded-full blur-3xl opacity-50" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="flex justify-between items-center mb-10">
@@ -390,18 +390,18 @@ function Onboarding() {
                   key={step.id}
                   className={`flex flex-col items-center relative z-10 ${
                     step.id < currentStep
-                      ? "text-emerald-600"
+                      ? "text-brand-600"
                       : step.id === currentStep
-                      ? "text-emerald-800 dark:text-emerald-400 font-bold"
+                      ? "text-brand-800 dark:text-brand-400 font-bold"
                       : "text-gray-400 dark:text-gray-600"
                   }`}
                 >
                   <div
                     className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
                       step.id < currentStep
-                        ? "bg-emerald-600 text-white"
+                        ? "bg-brand-600 text-white"
                         : step.id === currentStep
-                        ? "bg-white dark:bg-gray-900 border-2 border-emerald-600 ring-4 ring-emerald-100 dark:ring-emerald-900/30"
+                        ? "bg-white dark:bg-gray-900 border-2 border-brand-600 ring-4 ring-brand-100 dark:ring-brand-900/30"
                         : "bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700"
                     }`}
                   >

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import UpdateprofileComponent from '../components/UpdateprofileComponenet';
+import SettingsComponent from '../components/SettingsComponent';
 
 
 const Updateprofile = () => {
@@ -14,8 +14,8 @@ const Updateprofile = () => {
       <div className="flex-1 flex flex-col min-w-0">
         <Header isOpen={sidebarOpen} toggleOpen={setSidebarOpen} />
 
-        <main className="flex-1 overflow-x-hidden p-4 md:p-6 lg:p-8">
-          <UpdateprofileComponent/>  
+        <main className="flex-1 overflow-x-hidden">
+          <SettingsComponent />  
         </main>
       </div>
     </div>

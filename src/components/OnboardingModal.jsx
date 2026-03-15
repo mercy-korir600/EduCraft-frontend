@@ -39,7 +39,7 @@ const OnboardingModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 font-serif bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 md:p-8">
-        <h2 className="text-2xl font-bold text-emerald-700 mb-4">
+        <h2 className="text-2xl font-bold text-brand-700 mb-4">
           Add New Career
         </h2>
 
@@ -54,7 +54,7 @@ const OnboardingModal = ({ isOpen, onClose }) => {
                 setSelectedCareer(e.target.value);
                 setError("");
               }}
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-brand-500"
             >
               <option value="">-- Choose a Career --</option>
               {filteredCareers.map((career) => (
@@ -75,7 +75,7 @@ const OnboardingModal = ({ isOpen, onClose }) => {
             </button>
             <button
               onClick={handleSave}
-              className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg hover:bg-emerald-700"
+              className="px-4 py-2 bg-gradient-to-r from-brand-600 to-brand-700 text-white rounded-lg hover:bg-brand-700"
             >
               Save
             </button>

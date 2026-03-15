@@ -16,7 +16,7 @@ const DashboardComponent = () => {
   return (
     <div className='flex font-serif transition-colors duration-300'>
      <div className="p-6 bg-gray-50 dark:bg-gray-900 min-h-screen flex-1">
-      <h1 className="text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-8 text-center">📊 Dashboard Overview</h1>
+      <h1 className="text-3xl font-bold text-brand-700 dark:text-brand-400 mb-8 text-center">📊 Dashboard Overview</h1>
       
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -35,7 +35,7 @@ const DashboardComponent = () => {
 
       {/* Progress Section */}
       <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow mb-8 transition-colors duration-300">
-        <h2 className="text-xl font-semibold text-emerald-700 dark:text-emerald-400 mb-4">🛠 Current Tasks Progress</h2>
+        <h2 className="text-xl font-semibold text-brand-700 dark:text-brand-400 mb-4">🛠 Current Tasks Progress</h2>
         <div className="space-y-5">
           {[70, 45, 90].map((progress, index) => (
             <div key={index}>
@@ -45,7 +45,7 @@ const DashboardComponent = () => {
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
                 <div 
-                  className="bg-emerald-600 dark:bg-emerald-500 h-3 rounded-full transition-all duration-500" 
+                  className="bg-brand-600 dark:bg-brand-500 h-3 rounded-full transition-all duration-500" 
                   style={{ width: `${progress}%` }}
                 ></div>
               </div>
@@ -56,7 +56,7 @@ const DashboardComponent = () => {
 
       {/* Upcoming Tasks */}
       <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow transition-colors duration-300">
-        <h2 className="text-xl font-semibold text-emerald-700 dark:text-emerald-400 mb-4">🗓 Upcoming Tasks</h2>
+        <h2 className="text-xl font-semibold text-brand-700 dark:text-brand-400 mb-4">🗓 Upcoming Tasks</h2>
         <ul className="divide-y dark:divide-gray-700">
           {upcomingTasks.map(task => (
             <li key={task.id} className="py-4 flex justify-between items-center">

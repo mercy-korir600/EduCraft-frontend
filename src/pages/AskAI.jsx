@@ -17,7 +17,7 @@ const AskAI = () => {
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-900 z-10 transition-colors duration-300">
               <div className="flex flex-col items-center gap-4">
-                <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-12 h-12 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
                 <p className="text-gray-600 dark:text-gray-400 font-serif">Loading AI Assistant...</p>
               </div>
             </div>

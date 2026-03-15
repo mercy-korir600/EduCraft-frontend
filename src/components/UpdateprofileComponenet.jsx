@@ -94,7 +94,7 @@ const UpdateProfileComponent = () => {
 
   return (
     <div className="p-6 max-w-3xl font-serif mx-auto transition-colors duration-300">
-      <h1 className="text-2xl font-bold mb-6 text-emerald-700 dark:text-emerald-400">
+      <h1 className="text-2xl font-bold mb-6 text-brand-700 dark:text-brand-400">
         Update Your Profile
       </h1>
 
@@ -114,7 +114,7 @@ const UpdateProfileComponent = () => {
                 name="name"
                 value={profile.name}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-brand-500 focus:outline-none"
               />
             </div>
             <div>
@@ -140,14 +140,14 @@ const UpdateProfileComponent = () => {
           <div className="flex justify-between items-center mb-4">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Current Goal:{" "}
-              <span className="font-semibold text-emerald-700 dark:text-emerald-400">
+              <span className="font-semibold text-brand-700 dark:text-brand-400">
                 {profile.careerGoal}
               </span>
             </p>
             <button
               type="button"
               onClick={handleAddCareer}
-              className="px-4 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-md hover:bg-emerald-700 dark:hover:bg-emerald-600 focus:ring-2 focus:ring-emerald-500 transition-colors"
+              className="px-4 py-2 bg-brand-600 dark:bg-brand-700 text-white rounded-md hover:bg-brand-700 dark:hover:bg-brand-600 focus:ring-2 focus:ring-brand-500 transition-colors"
             >
               ADD CAREER
             </button>
@@ -160,7 +160,7 @@ const UpdateProfileComponent = () => {
             name="careerGoal"
             value={profile.careerGoal}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-brand-500"
           >
             {careerOptions.map((option) => (
               <option key={option} value={option}>
@@ -200,7 +200,7 @@ const UpdateProfileComponent = () => {
                   value={grade}
                   checked={profile.currentGrade === grade}
                   onChange={handleChange}
-                  className="h-4 w-4 text-emerald-600 dark:text-emerald-500 focus:ring-emerald-500 dark:bg-gray-700 dark:border-gray-600"
+                  className="h-4 w-4 text-brand-600 dark:text-brand-500 focus:ring-brand-500 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <span className="ml-2 text-gray-700 dark:text-gray-300">{grade}</span>
               </label>
@@ -221,7 +221,7 @@ const UpdateProfileComponent = () => {
                   name={key}
                   checked={value}
                   onChange={handleChange}
-                  className="h-4 w-4 text-emerald-600 dark:text-emerald-500 rounded focus:ring-emerald-500 dark:bg-gray-700 dark:border-gray-600"
+                  className="h-4 w-4 text-brand-600 dark:text-brand-500 rounded focus:ring-brand-500 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <span className="ml-2 text-gray-700 dark:text-gray-300 capitalize">
                   {key.replace(/([A-Z])/g, " $1")}
@@ -235,7 +235,7 @@ const UpdateProfileComponent = () => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="px-4 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-md hover:bg-emerald-700 dark:hover:bg-emerald-600 focus:ring-2 focus:ring-emerald-500 transition-colors"
+            className="px-4 py-2 bg-brand-600 dark:bg-brand-700 text-white rounded-md hover:bg-brand-700 dark:hover:bg-brand-600 focus:ring-2 focus:ring-brand-500 transition-colors"
           >
             Save Changes
           </button>
@@ -259,7 +259,7 @@ const UpdateProfileComponent = () => {
                     type="checkbox"
                     checked={selectedCareers.includes(career)}
                     onChange={() => toggleCareer(career)}
-                    className="h-4 w-4 text-emerald-600 dark:text-emerald-500"
+                    className="h-4 w-4 text-brand-600 dark:text-brand-500"
                   />
                   <span className="text-gray-700 dark:text-gray-300">{career}</span>
                 </label>
@@ -274,7 +274,7 @@ const UpdateProfileComponent = () => {
               </button>
               <button
                 onClick={handleSaveCareers}
-                className="px-4 py-2 bg-emerald-600 dark:bg-emerald-700 text-white rounded-md hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors"
+                className="px-4 py-2 bg-brand-600 dark:bg-brand-700 text-white rounded-md hover:bg-brand-700 dark:hover:bg-brand-600 transition-colors"
               >
                 Save
               </button>

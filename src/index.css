@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --brand-50: #faf4f8;
+    --brand-100: #f6e9f2;
+    --brand-200: #eccbe1;
+    --brand-300: #e3a6ce;
+    --brand-400: #da77b9;
+    --brand-500: #ce319a;
+    --brand-600: #9d2575;
+    --brand-700: #6e1a52; /* Primary Custom Color */
+    --brand-800: #4d0f38;
+    --brand-900: #350926;
+    --brand-950: #1b0413;
+  }
+
   body {
     @apply bg-white text-gray-900 transition-colors duration-300;
   }

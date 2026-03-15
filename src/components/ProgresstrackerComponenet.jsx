@@ -60,7 +60,7 @@ const ProgresstrackerComponent = () => {
         <h2 className="font-semibold mb-4 text-gray-700 dark:text-gray-200">Overall Completion</h2>
         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 mb-2">
           <div
-            className="bg-emerald-600 dark:bg-emerald-500 h-4 rounded-full transition-all duration-500"
+            className="bg-brand-600 dark:bg-brand-500 h-4 rounded-full transition-all duration-500"
             style={{
               width: `${calculateOverallProgress(courses)}%`
             }}
@@ -77,7 +77,7 @@ const ProgresstrackerComponent = () => {
           <div key={course.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow transition-colors duration-300">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">{course.title}</h2>
-              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400 rounded-full text-sm">
+              <span className="px-3 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-800 dark:text-brand-400 rounded-full text-sm">
                 {course.progress}% Complete
               </span>
             </div>
@@ -85,7 +85,7 @@ const ProgresstrackerComponent = () => {
             {/* Progress Bar */}
             <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-4">
               <div
-                className="bg-emerald-600 dark:bg-emerald-500 h-2.5 rounded-full transition-all duration-500"
+                className="bg-brand-600 dark:bg-brand-500 h-2.5 rounded-full transition-all duration-500"
                 style={{ width: `${course.progress}%` }}
               ></div>
             </div>
@@ -101,7 +101,7 @@ const ProgresstrackerComponent = () => {
                     onClick={() => toggleTopicComplete(course.id, topic.id)}
                     className={`w-5 h-5 rounded mr-3 flex items-center justify-center transition-colors ${
                       topic.completed
-                        ? 'bg-emerald-500 text-white'
+                        ? 'bg-brand-500 text-white'
                         : 'border-2 border-gray-300 dark:border-gray-600'
                     }`}
                   >
